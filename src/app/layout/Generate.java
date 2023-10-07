@@ -1,48 +1,58 @@
 package app.layout;
 
+import alert.Success;
+
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Generate extends JPanel {
+    private JLabel jLabel1 = new JLabel();
+    private JButton jButton1 = new JButton();
+    private JButton jButton2 = new JButton();
+    private JLabel jLabel2 = new JLabel();
+    private JProgressBar jProgressBar1 = new JProgressBar();
+    private JLabel jLabel3 = new JLabel();
+    private JSlider jSlider1 = new JSlider();
+    private JCheckBox jCheckBox1 = new JCheckBox();
+    private JCheckBox jCheckBox2 = new JCheckBox();
+    private JCheckBox jCheckBox3 = new JCheckBox();
+    private JCheckBox jCheckBox4 = new JCheckBox();
+    private JCheckBox jCheckBox5 = new JCheckBox();
+    private JCheckBox jCheckBox6 = new JCheckBox();
+    private JCheckBox jCheckBox7 = new JCheckBox();
+
     public Generate(JFrame jFrame) {
         initComponents(jFrame);
+        initEvents();
     }
 
     public void initComponents(JFrame jFrame) {
         JToolBar jToolBar1 = new JToolBar();
         JToolBar jToolBar2 = new JToolBar();
-        JLabel jLabel1 = new JLabel();
         Box.Filler filler1 = new Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
-        JButton jButton1 = new JButton();
-        JButton jButton2 = new JButton();
         Box.Filler filler2 = new Box.Filler(new java.awt.Dimension(0, 8), new java.awt.Dimension(0, 8), new java.awt.Dimension(32767, 8));
         JToolBar jToolBar3 = new JToolBar();
-        JLabel jLabel2 = new JLabel();
         Box.Filler filler3 = new Box.Filler(new java.awt.Dimension(24, 0), new java.awt.Dimension(24, 0), new java.awt.Dimension(24, 32767));
-        JProgressBar jProgressBar1 = new JProgressBar();
         JSeparator jSeparator1 = new JSeparator();
         JToolBar jToolBar4 = new JToolBar();
         JToolBar jToolBar5 = new JToolBar();
-        JLabel jLabel3 = new JLabel();
         Box.Filler filler4 = new Box.Filler(new java.awt.Dimension(24, 0), new java.awt.Dimension(24, 0), new java.awt.Dimension(24, 32767));
-        JSlider jSlider1 = new JSlider();
         Box.Filler filler5 = new Box.Filler(new java.awt.Dimension(0, 8), new java.awt.Dimension(0, 8), new java.awt.Dimension(32767, 8));
         JToolBar jToolBar6 = new JToolBar();
-        JCheckBox jCheckBox1 = new JCheckBox();
         Box.Filler filler6 = new Box.Filler(new java.awt.Dimension(24, 0), new java.awt.Dimension(24, 0), new java.awt.Dimension(24, 32767));
-        JCheckBox jCheckBox2 = new JCheckBox();
         Box.Filler filler7 = new Box.Filler(new java.awt.Dimension(24, 0), new java.awt.Dimension(24, 0), new java.awt.Dimension(24, 32767));
-        JCheckBox jCheckBox3 = new JCheckBox();
         Box.Filler filler8 = new Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
         Box.Filler filler9 = new Box.Filler(new java.awt.Dimension(0, 8), new java.awt.Dimension(0, 8), new java.awt.Dimension(32767, 8));
         JToolBar jToolBar7 = new JToolBar();
-        JCheckBox jCheckBox4 = new JCheckBox();
         Box.Filler filler10 = new Box.Filler(new java.awt.Dimension(24, 0), new java.awt.Dimension(24, 0), new java.awt.Dimension(24, 32767));
-        JCheckBox jCheckBox5 = new JCheckBox();
         Box.Filler filler11 = new Box.Filler(new java.awt.Dimension(24, 0), new java.awt.Dimension(24, 0), new java.awt.Dimension(24, 32767));
-        JCheckBox jCheckBox6 = new JCheckBox();
         Box.Filler filler12 = new Box.Filler(new java.awt.Dimension(24, 0), new java.awt.Dimension(24, 0), new java.awt.Dimension(24, 32767));
-        JCheckBox jCheckBox7 = new JCheckBox();
         Box.Filler filler14 = new Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
 
         jToolBar1.setOrientation(SwingConstants.VERTICAL);
@@ -54,13 +64,13 @@ public class Generate extends JPanel {
         jToolBar2.add(jLabel1);
         jToolBar2.add(filler1);
 
-        jButton1.setText("Copy");
+        jButton1.setText("Generate");
         jButton1.setFocusable(false);
         jButton1.setHorizontalTextPosition(SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(SwingConstants.BOTTOM);
         jToolBar2.add(jButton1);
 
-        jButton2.setText("Generate");
+        jButton2.setText("Copy");
         jButton2.setFocusable(false);
         jButton2.setHorizontalTextPosition(SwingConstants.CENTER);
         jButton2.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -71,7 +81,7 @@ public class Generate extends JPanel {
 
         jToolBar3.setRollover(true);
 
-        jLabel2.setText("Strength:");
+        jLabel2.setText("Strength: 0%");
         jToolBar3.add(jLabel2);
         jToolBar3.add(filler3);
 
@@ -107,10 +117,16 @@ public class Generate extends JPanel {
         jToolBar6.setBorder(null);
         jToolBar6.setRollover(true);
 
+        ButtonGroup buttonGroup1 = new ButtonGroup();
+        buttonGroup1.add(jCheckBox1);
+        buttonGroup1.add(jCheckBox2);
+        buttonGroup1.add(jCheckBox3);
+
         jCheckBox1.setText("All characters");
         jCheckBox1.setFocusable(false);
         jCheckBox1.setHorizontalTextPosition(SwingConstants.CENTER);
         jCheckBox1.setVerticalTextPosition(SwingConstants.BOTTOM);
+        jCheckBox1.setSelected(true);
         jToolBar6.add(jCheckBox1);
         jToolBar6.add(filler6);
 
@@ -186,5 +202,27 @@ public class Generate extends JPanel {
                                 .addComponent(jToolBar4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+    }
+
+    public void initEvents() {
+        jButton1.addActionListener(e -> {
+
+        });
+        jButton2.addActionListener(e -> {
+            String text = jLabel1.getText();
+            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+            StringSelection selection = new StringSelection(text);
+            clipboard.setContents(selection, null);
+
+            new Success("Text copied to clipboard successfully!");
+        });
+        jProgressBar1.addChangeListener(e -> {
+            int value = jProgressBar1.getValue();
+            jLabel2.setText("Strength: " + value);
+        });
+        jSlider1.addChangeListener(e -> {
+            int value = jSlider1.getValue();
+            jLabel3.setText("Length: " + value);
+        });
     }
 }
