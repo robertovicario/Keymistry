@@ -1,4 +1,6 @@
 package app.layout;
 
-public class Analyze {
+import javax.swing.*;
+
+public class Analyze extends JPanel {
 }

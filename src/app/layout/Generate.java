@@ -1,4 +1,6 @@
 package app.layout;
 
-public class Generate {
+import javax.swing.*;
+
+public class Generate extends JPanel {
 }

@@ -1,4 +1,6 @@
 package app.layout;
 
-public class Overview {
+import javax.swing.*;
+
+public class Overview extends JPanel {
 }
