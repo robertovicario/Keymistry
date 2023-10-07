@@ -9,7 +9,7 @@ public class App extends JFrame {
     }
 
     private void initComponents() {
-        JTabbedPane jTabbedPane1 = new javax.swing.JTabbedPane();
+        JTabbedPane jTabbedPane1 = new JTabbedPane();
         jTabbedPane1.addTab("Overview", new Overview(this));
         jTabbedPane1.addTab("Generate", new Generate(this));
 

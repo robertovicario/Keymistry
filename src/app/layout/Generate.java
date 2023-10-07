@@ -1,6 +1,7 @@
 package app.layout;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Generate extends JPanel {
     public Generate(JFrame jFrame) {
