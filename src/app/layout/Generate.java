@@ -1,15 +1,13 @@
 package app.layout;
 
+import alert.Alert;
 import alert.Success;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.Random;
 
 public class Generate extends JPanel {
     private JLabel jLabel1 = new JLabel();
@@ -153,6 +151,7 @@ public class Generate extends JPanel {
         jCheckBox4.setFocusable(false);
         jCheckBox4.setHorizontalTextPosition(SwingConstants.CENTER);
         jCheckBox4.setVerticalTextPosition(SwingConstants.BOTTOM);
+        jCheckBox4.setSelected(true);
         jToolBar7.add(jCheckBox4);
         jToolBar7.add(filler10);
 
@@ -160,6 +159,7 @@ public class Generate extends JPanel {
         jCheckBox5.setFocusable(false);
         jCheckBox5.setHorizontalTextPosition(SwingConstants.CENTER);
         jCheckBox5.setVerticalTextPosition(SwingConstants.BOTTOM);
+        jCheckBox5.setSelected(true);
         jToolBar7.add(jCheckBox5);
         jToolBar7.add(filler11);
 
@@ -167,6 +167,7 @@ public class Generate extends JPanel {
         jCheckBox6.setFocusable(false);
         jCheckBox6.setHorizontalTextPosition(SwingConstants.CENTER);
         jCheckBox6.setVerticalTextPosition(SwingConstants.BOTTOM);
+        jCheckBox6.setSelected(true);
         jToolBar7.add(jCheckBox6);
         jToolBar7.add(filler12);
 
@@ -206,19 +207,137 @@ public class Generate extends JPanel {
 
     public void initEvents() {
         jButton1.addActionListener(e -> {
+            StringBuilder password = new StringBuilder();
+            Random random = new Random();
+            String lowercaseChars1 = "abcdefghijklmnopqrstuvwxyz";
+            String lowercaseChars2 = "abcdefghjkmnpqrstuvwxyz";
+            String uppercaseChars1 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            String uppercaseChars2 = "ABCDEFGHJKLMNPQRSTUVWXYZ";
+            String numberChars1 = "0123456789";
+            String numberChars2 = "23456789";
+            String symbolChars = "!@#$%^&*()_+-=[]{}|;:,.<>?";
 
+            boolean areNotSelected =
+                    !jCheckBox4.isSelected() &&
+                    !jCheckBox5.isSelected() &&
+                    !jCheckBox6.isSelected() &&
+                    !jCheckBox7.isSelected();
+            if (areNotSelected) {
+                jCheckBox4.setForeground(Color.RED);
+                jCheckBox5.setForeground(Color.RED);
+                jCheckBox6.setForeground(Color.RED);
+                jCheckBox7.setForeground(Color.RED);
+
+                new Alert("Please select at least one option to generate a password.");
+            }
+
+            if (jCheckBox1.isSelected()) {
+                if (jCheckBox4.isSelected()) {
+                    password.append(lowercaseChars1);
+                }
+
+                if (jCheckBox5.isSelected()) {
+                    password.append(uppercaseChars1);
+                }
+
+                if (jCheckBox6.isSelected()) {
+                    password.append(numberChars1);
+                }
+
+                if (jCheckBox7.isSelected()) {
+                    password.append(symbolChars);
+                }
+            } else if (jCheckBox2.isSelected()) {
+                if (jCheckBox4.isSelected()) {
+                    password.append(lowercaseChars1);
+                }
+
+                if (jCheckBox5.isSelected()) {
+                    password.append(uppercaseChars1);
+                }
+
+                if (jCheckBox6.isSelected()) {
+                    jCheckBox6.setSelected(false);
+                }
+
+                if (jCheckBox7.isSelected()) {
+                    jCheckBox7.setSelected(false);
+                }
+            } else if (jCheckBox3.isSelected()){
+                if (jCheckBox4.isSelected()) {
+                    password.append(lowercaseChars2);
+                }
+
+                if (jCheckBox5.isSelected()) {
+                    password.append(uppercaseChars2);
+                }
+
+                if (jCheckBox6.isSelected()) {
+                    password.append(numberChars2);
+                }
+
+                if (jCheckBox7.isSelected()) {
+                    password.append(symbolChars);
+                }
+            }
+
+            StringBuilder generatedPassword = new StringBuilder();
+            int length = jSlider1.getValue();
+            for (int i = 0; i < length; i++) {
+                int randomIndex = random.nextInt(password.length());
+                generatedPassword.append(password.charAt(randomIndex));
+            }
+
+            if (!areNotSelected) {
+                jCheckBox4.setForeground(Color.BLACK);
+                jCheckBox5.setForeground(Color.BLACK);
+                jCheckBox6.setForeground(Color.BLACK);
+                jCheckBox7.setForeground(Color.BLACK);
+            }
+
+            jLabel1.setText(generatedPassword.toString());
+
+            // -- --
+
+            String newPassword = jLabel1.getText();
+            int complexity = 0;
+
+            if (length >= 8) {
+                complexity += 25;
+            } else if (length >= 6) {
+                complexity += 10;
+            }
+
+            // Check for uppercase letters
+            if (newPassword.matches(".*[A-Z].*")) {
+                complexity += 25;
+            }
+
+            // Check for lowercase letters
+            if (newPassword.matches(".*[a-z].*")) {
+                complexity += 25;
+            }
+
+            // Check for digits
+            if (newPassword.matches(".*\\d.*")) {
+                complexity += 25;
+            }
+
+            // Check for special characters
+            if (newPassword.matches(".*[@#$%^&+=].*")) {
+                complexity += 25;
+            }
+
+            // Ensure the complexity is between 0 and 100%
+            complexity = Math.min(100, complexity);
+            jLabel2.setText("Strength: " + complexity);
+            jProgressBar1.setValue(complexity);
         });
         jButton2.addActionListener(e -> {
             String text = jLabel1.getText();
             Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
             StringSelection selection = new StringSelection(text);
             clipboard.setContents(selection, null);
-
-            new Success("Text copied to clipboard successfully!");
-        });
-        jProgressBar1.addChangeListener(e -> {
-            int value = jProgressBar1.getValue();
-            jLabel2.setText("Strength: " + value);
         });
         jSlider1.addChangeListener(e -> {
             int value = jSlider1.getValue();
