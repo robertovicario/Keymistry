@@ -11,7 +11,7 @@ public class App extends JFrame {
     private void initComponents() {
         JTabbedPane jTabbedPane1 = new JTabbedPane();
         jTabbedPane1.addTab("Overview", new Overview(this));
-        jTabbedPane1.addTab("Generate", new Generate(this));
+        jTabbedPane1.addTab("Generate", new Generator(this));
 
         setTitle("PassWorld");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
