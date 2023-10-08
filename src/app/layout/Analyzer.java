@@ -2,5 +2,5 @@ package app.layout;
 
 import javax.swing.*;
 
-public class Analyze extends JPanel {
+public class Analyzer extends JPanel {
 }

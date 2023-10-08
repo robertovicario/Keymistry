@@ -1,30 +1,46 @@
 package app.layout;
 
+import com.formdev.flatlaf.FlatLightLaf;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class App {
-    public App() {
+public class App extends JFrame {
+    private final String tab;
+
+    public App(String tab) {
+        this.tab = tab;
+
+        try {
+            UIManager.setLookAndFeel(new FlatLightLaf());
+        } catch (UnsupportedLookAndFeelException e) {
+            throw new RuntimeException(e);
+        }
+
         initComponents();
     }
 
     private void initComponents() {
         JFrame jFrame = new JFrame();
         JTabbedPane jTabbedPane1 = new JTabbedPane();
-        JPanel jPanel1 = new Generator();
 
-        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGap(0, 492, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGap(0, 0, Short.MAX_VALUE)
-        );
+        jTabbedPane1.addTab("Overview", new Overview());
+        jTabbedPane1.addTab("Generator", new Generator());
+        jTabbedPane1.addTab("Analyzer", new Analyzer());
+        jTabbedPane1.addTab("Vault", new Vault());
 
-        jTabbedPane1.addTab("Generator", jPanel1);
+        switch (tab) {
+            case "Overview":
+                jTabbedPane1.setSelectedIndex(0);
+            case "Generator":
+                jTabbedPane1.setSelectedIndex(1);
+            case "Analyzer":
+                jTabbedPane1.setSelectedIndex(2);
+            case "Vault":
+                jTabbedPane1.setSelectedIndex(3);
+            default:
+                jTabbedPane1.setSelectedIndex(0);
+        }
 
         GroupLayout layout = new GroupLayout(jFrame.getContentPane());
         jFrame.getContentPane().setLayout(layout);
