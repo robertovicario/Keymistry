@@ -18,32 +18,35 @@ public class CoreGenerator {
     private final JTextField jTextField1;
     private final JLabel jLabel1;
     private final JProgressBar jProgressBar1;
+    private final JLabel jLabel2;
+    private final JSlider jSlider1;
     private final JCheckBox jCheckBox1;
     private final JCheckBox jCheckBox2;
     private final JCheckBox jCheckBox3;
     private final JCheckBox jCheckBox4;
-    private final JSlider jSlider1;
 
     /**
      *
      * @param jTextField1
      * @param jLabel1
      * @param jProgressBar1
+     * @param jSlider1
+     * @param jLabel2
      * @param jCheckBox1
      * @param jCheckBox2
      * @param jCheckBox3
      * @param jCheckBox4
-     * @param jSlider1
      */
-    public CoreGenerator(JTextField jTextField1, JLabel jLabel1, JProgressBar jProgressBar1, JSlider jSlider1, JCheckBox jCheckBox1, JCheckBox jCheckBox2, JCheckBox jCheckBox3, JCheckBox jCheckBox4) {
+    public CoreGenerator(JTextField jTextField1, JLabel jLabel1, JProgressBar jProgressBar1, JSlider jSlider1, JLabel jLabel2, JCheckBox jCheckBox1, JCheckBox jCheckBox2, JCheckBox jCheckBox3, JCheckBox jCheckBox4) {
         this.jTextField1 = jTextField1;
         this.jLabel1 = jLabel1;
         this.jProgressBar1 = jProgressBar1;
+        this.jLabel2 = jLabel2;
+        this.jSlider1 = jSlider1;
         this.jCheckBox1 = jCheckBox1;
         this.jCheckBox2 = jCheckBox2;
         this.jCheckBox3 = jCheckBox3;
         this.jCheckBox4 = jCheckBox4;
-        this.jSlider1 = jSlider1;
     }
 
     /**
@@ -75,7 +78,7 @@ public class CoreGenerator {
             charSet.append(SYMBOL_CHARS);
         }
 
-        int length = jTextField1.getText().length();
+        int length = jSlider1.getValue();
         StringBuilder generatedPassword = new StringBuilder();
 
         for (int i = 0; i < length; i++) {
@@ -161,6 +164,8 @@ public class CoreGenerator {
         int length = jTextField1.getText().length();
 
         computeComplexity(password, length);
+        jLabel2.setText("Length: " + length);
+        jSlider1.setValue(length);
     }
 
     /**
@@ -189,10 +194,10 @@ public class CoreGenerator {
             setCheckBoxForeground(Color.RED);
             new Alert("Please, select at least one option to generate a password.");
         } else {
-            int length = jSlider1.getValue();
-            generatePassword();
-
             String password = jTextField1.getText();
+            int length = jSlider1.getValue();
+
+            generatePassword();
             computeComplexity(password, length);
         }
     }

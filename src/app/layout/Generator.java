@@ -25,7 +25,7 @@ public class Generator extends JPanel {
     private final JCheckBox jCheckBox2 = new JCheckBox();
     private final JCheckBox jCheckBox3 = new JCheckBox();
     private final JCheckBox jCheckBox4 = new JCheckBox();
-    CoreGenerator coreGenerator = new CoreGenerator(jTextField1, jLabel1, jProgressBar1, jSlider1, jCheckBox1, jCheckBox2, jCheckBox3, jCheckBox4);
+    CoreGenerator coreGenerator = new CoreGenerator(jTextField1, jLabel1, jProgressBar1, jSlider1, jLabel2, jCheckBox1, jCheckBox2, jCheckBox3, jCheckBox4);
 
     /**
      *
@@ -183,7 +183,7 @@ public class Generator extends JPanel {
         coreGenerator.mainThread();
         jTextField1.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyReleased(KeyEvent e) {
+            public void keyTyped(KeyEvent e) {
                 coreGenerator.customizePassword();
             }
         });
@@ -193,7 +193,7 @@ public class Generator extends JPanel {
             Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(data), null);
         });
         jSlider1.addChangeListener(e -> {
-            int text = jTextField1.getText().length();
+            int text = jSlider1.getValue();
             jLabel2.setText("Length: " + text);
 
             coreGenerator.mainThread();
