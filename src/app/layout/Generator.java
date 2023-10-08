@@ -6,6 +6,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 
+/**
+ *
+ *
+ * @author Roberto Vicario
+ * @version 1.0
+ */
 public class Generator extends JPanel {
     private final JLabel jLabel1 = new JLabel();
     private final JButton jButton1 = new JButton();
@@ -20,12 +26,18 @@ public class Generator extends JPanel {
     private final JCheckBox jCheckBox4 = new JCheckBox();
     CoreGenerator coreGenerator = new CoreGenerator(jLabel1, jLabel2, jProgressBar1, jCheckBox1, jCheckBox2, jCheckBox3, jCheckBox4, jSlider1);
 
+    /**
+     *
+     */
     public Generator() {
         initComponents();
         initEvents();
         coreGenerator.mainProcess();
     }
 
+    /**
+     *
+     */
     public void initComponents() {
         JPanel jPanel1 = new JPanel();
         JToolBar jToolBar1 = new JToolBar();
@@ -166,6 +178,9 @@ public class Generator extends JPanel {
         );
     }
 
+    /**
+     *
+     */
     public void initEvents() {
         jButton1.addActionListener(e -> coreGenerator.mainProcess());
         jButton2.addActionListener(e -> {

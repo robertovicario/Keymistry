@@ -9,6 +9,12 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
+/**
+ *
+ *
+ * @author Roberto Vicario
+ * @version 1.0
+ */
 public class CoreGenerator {
     private final JLabel jLabel1;
     private final JLabel jLabel2;
@@ -19,6 +25,17 @@ public class CoreGenerator {
     private final JCheckBox jCheckBox4;
     private final JSlider jSlider1;
 
+    /**
+     *
+     * @param jLabel1
+     * @param jLabel2
+     * @param jProgressBar1
+     * @param jCheckBox1
+     * @param jCheckBox2
+     * @param jCheckBox3
+     * @param jCheckBox4
+     * @param jSlider1
+     */
     public CoreGenerator(JLabel jLabel1, JLabel jLabel2, JProgressBar jProgressBar1, JCheckBox jCheckBox1, JCheckBox jCheckBox2, JCheckBox jCheckBox3, JCheckBox jCheckBox4, JSlider jSlider1) {
         this.jLabel1 = jLabel1;
         this.jLabel2 = jLabel2;
@@ -30,6 +47,14 @@ public class CoreGenerator {
         this.jSlider1 = jSlider1;
     }
 
+    /**
+     *
+     * @param useLowercase
+     * @param useUppercase
+     * @param useNumbers
+     * @param useSymbols
+     * @param length
+     */
     public void generatePassword(boolean useLowercase, boolean useUppercase, boolean useNumbers, boolean useSymbols, int length) {
     String LOWERCASE_CHARS = "abcdefghijklmnopqrstuvwxyz";
     String UPPERCASE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -61,12 +86,24 @@ public class CoreGenerator {
     jLabel1.setText(password);
 }
 
+    /**
+     *
+     * @param strength
+     * @param timeToCrack
+     * @param color
+     * @param progressBarValue
+     */
     private void setComplexity(String strength, String timeToCrack, Color color, int progressBarValue) {
         jLabel2.setText("Strength: " + strength + " - Time to crack: " + timeToCrack);
         jProgressBar1.setValue(progressBarValue);
         jProgressBar1.setForeground(color);
     }
 
+    /**
+     *
+     * @param password
+     * @param length
+     */
     private void computeComplexity(String password, int length) {
         Set<String> veryWeakPasswords = new HashSet<>(Arrays.asList(
                 "123456", "123456789", "12345", "qwerty", "password",
@@ -115,6 +152,10 @@ public class CoreGenerator {
         setComplexity(complexity, timeToCrack, color, strength);
     }
 
+    /**
+     *
+     * @param color
+     */
     private void setCheckBoxForeground(Color color) {
         jCheckBox1.setForeground(color);
         jCheckBox2.setForeground(color);
@@ -122,6 +163,9 @@ public class CoreGenerator {
         jCheckBox4.setForeground(color);
     }
 
+    /**
+     *
+     */
     public void mainProcess() {
         boolean useLowercase = jCheckBox1.isSelected();
         boolean useUppercase = jCheckBox2.isSelected();

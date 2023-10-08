@@ -3,7 +3,7 @@ package app;
 import app.layout.App;
 
 /**
- * The ToDo class is responsible for launching the application.
+ * This class is responsible for launching the application.
  *
  * @author Roberto Vicario
  * @version 1.0
