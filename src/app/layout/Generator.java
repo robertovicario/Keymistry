@@ -20,13 +20,14 @@ public class Generator extends JPanel {
     private final JCheckBox jCheckBox4 = new JCheckBox();
     CoreGenerator coreGenerator = new CoreGenerator(jLabel1, jLabel2, jProgressBar1, jCheckBox1, jCheckBox2, jCheckBox3, jCheckBox4, jSlider1);
 
-    public Generator(JFrame jFrame) {
-        initComponents(jFrame);
+    public Generator() {
+        initComponents();
         initEvents();
         coreGenerator.mainProcess();
     }
 
-    public void initComponents(JFrame jFrame) {
+    public void initComponents() {
+        JPanel jPanel1 = new JPanel();
         JToolBar jToolBar1 = new JToolBar();
         Box.Filler filler1 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(32767, 32767));
         JSeparator jSeparator1 = new JSeparator();
@@ -108,28 +109,28 @@ public class Generator extends JPanel {
         jToolBar2.add(jCheckBox4);
         jToolBar2.add(filler5);
 
-        GroupLayout layout = new GroupLayout(jFrame.getContentPane());
-        jFrame.getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
+        GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                         .addComponent(jToolBar1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jProgressBar1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jSeparator1)
-                                        .addComponent(jSlider1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addComponent(jProgressBar1, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jSeparator1, GroupLayout.Alignment.LEADING)
+                                        .addComponent(jSlider1, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                         .addComponent(jLabel2)
                                                         .addComponent(jLabel3))
                                                 .addGap(0, 0, Short.MAX_VALUE))
-                                        .addComponent(jToolBar2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(jToolBar2, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap())
         );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+                jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jToolBar1, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -145,6 +146,23 @@ public class Generator extends JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(jToolBar2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        GroupLayout layout = new GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jPanel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
         );
     }
 
