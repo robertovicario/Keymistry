@@ -9,7 +9,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 /**
- *
  * @author Roberto Vicario
  * @version 1.0
  */
@@ -25,19 +24,13 @@ public class Generator extends JPanel {
     private final JCheckBox jCheckBox2 = new JCheckBox();
     private final JCheckBox jCheckBox3 = new JCheckBox();
     private final JCheckBox jCheckBox4 = new JCheckBox();
-    CoreGenerator coreGenerator = new CoreGenerator(jTextField1, jLabel1, jProgressBar1, jSlider1, jLabel2, jCheckBox1, jCheckBox2, jCheckBox3, jCheckBox4);
+    CoreGenerator coreGenerator = new CoreGenerator(jTextField1, jLabel1, jProgressBar1, jSlider1, jCheckBox1, jCheckBox2, jCheckBox3, jCheckBox4);
 
-    /**
-     *
-     */
     public Generator() {
         initComponents();
         initEvents();
     }
 
-    /**
-     *
-     */
     public void initComponents() {
         JPanel jPanel1 = new JPanel();
         JToolBar jToolBar1 = new JToolBar();
@@ -176,14 +169,11 @@ public class Generator extends JPanel {
         );
     }
 
-    /**
-     *
-     */
     public void initEvents() {
         coreGenerator.mainThread();
         jTextField1.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyTyped(KeyEvent e) {
+            public void keyReleased(KeyEvent e) {
                 coreGenerator.customizePassword();
             }
         });

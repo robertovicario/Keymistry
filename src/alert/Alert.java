@@ -3,8 +3,6 @@ package alert;
 import javax.swing.*;
 
 /**
- * This class allows you to create customized alert dialogs with various options.
- *
  * @author Roberto Vicario
  * @version 1.0
  */

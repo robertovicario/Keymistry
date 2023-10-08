@@ -11,24 +11,17 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 /**
- *
  * @author Roberto Vicario
  * @version 1.0
  */
 public class Overview extends JPanel {
     private final JLabel jLabel1 = new JLabel();
 
-    /**
-     *
-     */
     public Overview() {
         initComponents();
         initEvents();
     }
 
-    /**
-     *
-     */
     public void initComponents() {
         JPanel jPanel1 = new JPanel();
         JToolBar jToolBar1 = new JToolBar();
@@ -89,9 +82,6 @@ public class Overview extends JPanel {
         );
     }
 
-    /**
-     *
-     */
     public void initEvents() {
         jLabel1.addMouseListener(new MouseAdapter() {
             @Override

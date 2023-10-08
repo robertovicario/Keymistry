@@ -6,17 +6,12 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- *
  * @author Roberto Vicario
  * @version 1.0
  */
 public class App extends JFrame {
     private final String tab;
 
-    /**
-     *
-     * @param tab
-     */
     public App(String tab) {
         this.tab = tab;
 
@@ -29,9 +24,6 @@ public class App extends JFrame {
         initComponents();
     }
 
-    /**
-     *
-     */
     private void initComponents() {
         JFrame jFrame = new JFrame();
         JTabbedPane jTabbedPane1 = new JTabbedPane();
@@ -66,7 +58,7 @@ public class App extends JFrame {
                                 .addGap(12, 12, 12))
         );
 
-        jFrame.setTitle("PassWorld");
+        jFrame.setTitle("Keymistry");
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jFrame.setMinimumSize(new Dimension(700, 525));
         jFrame.pack();
