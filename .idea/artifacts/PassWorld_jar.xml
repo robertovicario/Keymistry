@@ -1,9 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="PassWorld:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/PassWorld_jar</output-path>
-    <root id="archive" name="PassWorld.jar">
-      <element id="module-output" name="PassWorld" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/lib/flatlaf-2.5.jar" path-in-jar="/" />
-    </root>
-  </artifact>
-</component>

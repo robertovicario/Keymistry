@@ -7,7 +7,6 @@ import java.awt.*;
 
 /**
  *
- *
  * @author Roberto Vicario
  * @version 1.0
  */
@@ -39,8 +38,6 @@ public class App extends JFrame {
 
         jTabbedPane1.addTab("Overview", new Overview());
         jTabbedPane1.addTab("Generator", new Generator());
-        jTabbedPane1.addTab("Analyzer", new Analyzer());
-        jTabbedPane1.addTab("Vault", new Vault());
 
         switch (tab) {
             case "Overview":
@@ -48,9 +45,6 @@ public class App extends JFrame {
             case "Generator":
                 jTabbedPane1.setSelectedIndex(1);
             case "Analyzer":
-                jTabbedPane1.setSelectedIndex(2);
-            case "Vault":
-                jTabbedPane1.setSelectedIndex(3);
             default:
                 jTabbedPane1.setSelectedIndex(0);
         }

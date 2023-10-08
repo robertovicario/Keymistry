@@ -12,7 +12,6 @@ import java.net.URISyntaxException;
 
 /**
  *
- *
  * @author Roberto Vicario
  * @version 1.0
  */
@@ -44,7 +43,7 @@ public class Overview extends JPanel {
 
         jLabel1.setFont(new Font("", Font.PLAIN, 20));
         jLabel1.setForeground(Color.BLUE);
-        jLabel1.setText("Learn more on GitHub: github.com/PassWorld.git");
+        jLabel1.setText("Learn more on GitHub: github.com/Keymistry.git");
         jToolBar1.add(jLabel1);
         jToolBar1.add(filler2);
 
@@ -58,7 +57,7 @@ public class Overview extends JPanel {
                         .addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel2, GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
+                                        .addComponent(jLabel2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jToolBar1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap())
         );
@@ -98,7 +97,7 @@ public class Overview extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-                    Desktop.getDesktop().browse(new URI("https://github.com/robertovicario/PassWorld.git"));
+                    Desktop.getDesktop().browse(new URI("https://github.com/robertovicario/Keymistry.git"));
                 } catch (IOException | URISyntaxException ex) {
                     new Alert(ex.getMessage());
                 }

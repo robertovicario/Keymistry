@@ -11,13 +11,12 @@ import java.util.Set;
 
 /**
  *
- *
  * @author Roberto Vicario
  * @version 1.0
  */
 public class CoreGenerator {
+    private final JTextField jTextField1;
     private final JLabel jLabel1;
-    private final JLabel jLabel2;
     private final JProgressBar jProgressBar1;
     private final JCheckBox jCheckBox1;
     private final JCheckBox jCheckBox2;
@@ -27,8 +26,8 @@ public class CoreGenerator {
 
     /**
      *
+     * @param jTextField1
      * @param jLabel1
-     * @param jLabel2
      * @param jProgressBar1
      * @param jCheckBox1
      * @param jCheckBox2
@@ -36,9 +35,9 @@ public class CoreGenerator {
      * @param jCheckBox4
      * @param jSlider1
      */
-    public CoreGenerator(JLabel jLabel1, JLabel jLabel2, JProgressBar jProgressBar1, JCheckBox jCheckBox1, JCheckBox jCheckBox2, JCheckBox jCheckBox3, JCheckBox jCheckBox4, JSlider jSlider1) {
+    public CoreGenerator(JTextField jTextField1, JLabel jLabel1, JProgressBar jProgressBar1, JSlider jSlider1, JCheckBox jCheckBox1, JCheckBox jCheckBox2, JCheckBox jCheckBox3, JCheckBox jCheckBox4) {
+        this.jTextField1 = jTextField1;
         this.jLabel1 = jLabel1;
-        this.jLabel2 = jLabel2;
         this.jProgressBar1 = jProgressBar1;
         this.jCheckBox1 = jCheckBox1;
         this.jCheckBox2 = jCheckBox2;
@@ -49,42 +48,44 @@ public class CoreGenerator {
 
     /**
      *
-     * @param useLowercase
-     * @param useUppercase
-     * @param useNumbers
-     * @param useSymbols
-     * @param length
      */
-    public void generatePassword(boolean useLowercase, boolean useUppercase, boolean useNumbers, boolean useSymbols, int length) {
-    String LOWERCASE_CHARS = "abcdefghijklmnopqrstuvwxyz";
-    String UPPERCASE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    String NUMBER_CHARS = "0123456789";
-    String SYMBOL_CHARS = "!@#$%^&*()_+-=[]{}|;:,.<>?";
-    Random random = new Random();
-    StringBuilder charSet = new StringBuilder();
+    public void generatePassword() {
+        String LOWERCASE_CHARS = "abcdefghijklmnopqrstuvwxyz";
+        String UPPERCASE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String NUMBER_CHARS = "0123456789";
+        String SYMBOL_CHARS = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+        Random random = new Random();
+        StringBuilder charSet = new StringBuilder();
 
-    if (useSymbols) {
-        charSet.append(SYMBOL_CHARS);
-    }
-    if (useLowercase) {
-        charSet.append(LOWERCASE_CHARS);
-    }
-    if (useUppercase) {
-        charSet.append(UPPERCASE_CHARS);
-    }
-    if (useNumbers) {
-        charSet.append(NUMBER_CHARS);
-    }
+        boolean useLowercase = jCheckBox1.isSelected();
+        boolean useUppercase = jCheckBox2.isSelected();
+        boolean useNumbers = jCheckBox3.isSelected();
+        boolean useSymbols = jCheckBox4.isSelected();
 
-    StringBuilder generatedPassword = new StringBuilder();
-    for (int i = 0; i < length; i++) {
-        int randomIndex = random.nextInt(charSet.length());
-        generatedPassword.append(charSet.charAt(randomIndex));
-    }
+        if (useLowercase) {
+            charSet.append(LOWERCASE_CHARS);
+        }
+        if (useUppercase) {
+            charSet.append(UPPERCASE_CHARS);
+        }
+        if (useNumbers) {
+            charSet.append(NUMBER_CHARS);
+        }
+        if (useSymbols) {
+            charSet.append(SYMBOL_CHARS);
+        }
 
-    String password = generatedPassword.toString();
-    jLabel1.setText(password);
-}
+        int length = jTextField1.getText().length();
+        StringBuilder generatedPassword = new StringBuilder();
+
+        for (int i = 0; i < length; i++) {
+            int randomIndex = random.nextInt(charSet.length());
+            generatedPassword.append(charSet.charAt(randomIndex));
+        }
+
+        String password = generatedPassword.toString();
+        jTextField1.setText(password);
+    }
 
     /**
      *
@@ -94,7 +95,7 @@ public class CoreGenerator {
      * @param progressBarValue
      */
     private void setComplexity(String strength, String timeToCrack, Color color, int progressBarValue) {
-        jLabel2.setText("Strength: " + strength + " - Time to crack: " + timeToCrack);
+        jLabel1.setText("Strength: " + strength + " - Time to crack: " + timeToCrack);
         jProgressBar1.setValue(progressBarValue);
         jProgressBar1.setForeground(color);
     }
@@ -154,6 +155,16 @@ public class CoreGenerator {
 
     /**
      *
+     */
+    public void customizePassword() {
+        String password = jTextField1.getText();
+        int length = jTextField1.getText().length();
+
+        computeComplexity(password, length);
+    }
+
+    /**
+     *
      * @param color
      */
     private void setCheckBoxForeground(Color color) {
@@ -166,7 +177,7 @@ public class CoreGenerator {
     /**
      *
      */
-    public void mainProcess() {
+    public void mainThread() {
         boolean useLowercase = jCheckBox1.isSelected();
         boolean useUppercase = jCheckBox2.isSelected();
         boolean useNumbers = jCheckBox3.isSelected();
@@ -179,9 +190,9 @@ public class CoreGenerator {
             new Alert("Please, select at least one option to generate a password.");
         } else {
             int length = jSlider1.getValue();
-            generatePassword(useLowercase, useUppercase, useNumbers, useSymbols, length);
+            generatePassword();
 
-            String password = jLabel1.getText();
+            String password = jTextField1.getText();
             computeComplexity(password, length);
         }
     }
