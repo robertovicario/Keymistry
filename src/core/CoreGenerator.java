@@ -85,22 +85,22 @@ public class CoreGenerator {
             timeToCrack = "Instant";
             color = Color.RED;
             strength = 0;
-        } else if (length <= 3) {
+        } else if (length < 4) {
             complexity = "Very Weak";
             timeToCrack = "Instant";
             color = Color.RED;
             strength = 0;
-        } else if (length <= 6) {
+        } else if (length < 8) {
             complexity = "Weak";
             timeToCrack = "Minutes to hours";
             color = Color.RED;
             strength = 25;
-        } else if (length <= 8) {
+        } else if (length < 10) {
             complexity = "Moderate";
             timeToCrack = "Hours to days";
             color = Color.YELLOW;
             strength = 50;
-        } else if (length <= 10) {
+        } else if (length < 12) {
             complexity = "Strong";
             timeToCrack = "Weeks to months";
             color = Color.GREEN;
