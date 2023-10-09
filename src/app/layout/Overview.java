@@ -9,7 +9,6 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Objects;
 
 /**
  * @author Roberto Vicario
