@@ -11,7 +11,7 @@ Keymistry is the fusion of "Key" and "Chemistry", signifying the seamless union 
 
 ## User Interface
 
-![keymistry](https://github.com/robertovicario/Keymistry/blob/f86974af0a30d84be6564984cb2ca9fd62415a20/img/1.png)
+![1](https://github.com/robertovicario/Keymistry/blob/f0dddec9f4d986064922bea8c83a437c89588d1c/img/1.png)
 
 ## Instructions
 
