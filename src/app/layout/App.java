@@ -1,6 +1,6 @@
 package app.layout;
 
-import com.formdev.flatlaf.intellijthemes.materialthemeuilite.*;
+import com.formdev.flatlaf.intellijthemes.FlatHighContrastIJTheme;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +16,7 @@ public class App extends JFrame {
         this.tab = tab;
 
         try {
-            UIManager.setLookAndFeel(new FlatGitHubIJTheme());
+            UIManager.setLookAndFeel(new FlatHighContrastIJTheme());
         } catch (UnsupportedLookAndFeelException e) {
             throw new RuntimeException(e);
         }
@@ -31,16 +31,10 @@ public class App extends JFrame {
         jTabbedPane1.addTab("Overview", new Overview());
         jTabbedPane1.addTab("Generator", new Generator());
 
-        switch (tab) {
-            case "Overview":
-                jTabbedPane1.setSelectedIndex(0);
-                break;
-            case "Generator":
-                jTabbedPane1.setSelectedIndex(1);
-                break;
-            default:
-                jTabbedPane1.setSelectedIndex(0);
-                break;
+        if (tab.equals("Generator")) {
+            jTabbedPane1.setSelectedIndex(1);
+        } else {
+            jTabbedPane1.setSelectedIndex(0);
         }
 
         GroupLayout layout = new GroupLayout(jFrame.getContentPane());
