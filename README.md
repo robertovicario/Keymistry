@@ -4,6 +4,11 @@
 
 Elevate your security with Keymistry, the cutting-edge application designed to analyze and effortlessly generate strong, unique passwords for all your needs.
 
+Keymistry is the fusion of "Key" and "Chemistry," signifying the seamless union of two essential elements:
+
+- "Key" signifies the fundamental component or code, much like a password;
+- "Chemistry" hints at the intricate and precise processes required to produce something.
+
 ## User Interface
 
 <img width="256" alt="keymistry" src="https://github.com/robertovicario/Calculator/blob/c3875bcbd282bf86c2eb217471b0b8e7aaa2d23e/doc/img/calculator.png">
