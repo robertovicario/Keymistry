@@ -1,9 +1,8 @@
 package app.layout;
 
 import com.formdev.flatlaf.FlatLightLaf;
-import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubContrastIJTheme;
-import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubDarkIJTheme;
-import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatGrayIJTheme;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +18,7 @@ public class App extends JFrame {
         this.tab = tab;
 
         try {
-            UIManager.setLookAndFeel(new FlatGitHubDarkIJTheme());
+            UIManager.setLookAndFeel(new FlatGitHubIJTheme());
         } catch (UnsupportedLookAndFeelException e) {
             throw new RuntimeException(e);
         }
