@@ -1,7 +1,5 @@
 package app.layout;
 
-import com.formdev.flatlaf.FlatLightLaf;
-import com.formdev.flatlaf.intellijthemes.FlatGrayIJTheme;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.*;
 
 import javax.swing.*;
