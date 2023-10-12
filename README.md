@@ -11,11 +11,11 @@ Keymistry is the fusion of "Key" and "Chemistry", signifying the seamless union 
 
 ## User Interface
 
-<img width="256" alt="keymistry" src="https://github.com/robertovicario/Calculator/blob/c3875bcbd282bf86c2eb217471b0b8e7aaa2d23e/doc/img/calculator.png">
+![1](https://github.com/robertovicario/Keymistry/blob/fe695229eab72d9ae92221c81693e295e730d167/img/1.png)
 
 ## Instructions
 
-Follow these steps to make use of the Calculator:
+Follow these steps to make use of the application:
 
 1. Download the project repository.
 2. Run the file located in `dist/Keymistry.jar`.
