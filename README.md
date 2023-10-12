@@ -6,12 +6,12 @@ Elevate your security with Keymistry, the cutting-edge application designed to a
 
 Keymistry is the fusion of "Key" and "Chemistry", signifying the seamless union of two essential elements:
 
-- "Key" signifies the fundamental component or code, much like a password;
-- "Chemistry" hints at the intricate and precise processes required to produce something.
+- 🔑 "Key" signifies the fundamental component or code, much like a password;
+- 🧪 "Chemistry" hints at the intricate and precise processes required to produce something.
 
 ## User Interface
 
-![1](https://github.com/robertovicario/Keymistry/blob/fe695229eab72d9ae92221c81693e295e730d167/img/1.png)
+![keymistry](https://github.com/robertovicario/Keymistry/blob/f86974af0a30d84be6564984cb2ca9fd62415a20/img/1.png)
 
 ## Instructions
 
