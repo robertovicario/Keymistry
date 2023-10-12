@@ -28,13 +28,10 @@ public class Overview extends JPanel {
         Box.Filler filler1 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(32767, 32767));
         Box.Filler filler2 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(32767, 32767));
 
-        jPanel1.setBackground(Color.WHITE);
-
         jToolBar1.setRollover(true);
         jToolBar1.add(filler1);
 
         jLabel1.setFont(new Font("", Font.PLAIN, 20));
-        jLabel1.setForeground(Color.BLUE);
         jLabel1.setText("Learn more on GitHub: github.com/Keymistry.git");
         jToolBar1.add(jLabel1);
         jToolBar1.add(filler2);

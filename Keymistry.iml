@@ -8,5 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="flatlaf-2.5" level="project" />
+    <orderEntry type="library" name="flatlaf-intellij-themes-2.5" level="project" />
   </component>
 </module>

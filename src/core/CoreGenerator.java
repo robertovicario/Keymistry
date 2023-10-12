@@ -142,7 +142,7 @@ public class CoreGenerator {
         boolean useNumbers = jCheckBox3.isSelected();
         boolean useSymbols = jCheckBox4.isSelected();
 
-        setCheckBoxForeground(Color.BLACK);
+        setCheckBoxForeground(UIManager.getColor("JCheckBox.foreground"));
 
         if (!useLowercase && !useUppercase && !useNumbers && !useSymbols) {
             setCheckBoxForeground(Color.RED);

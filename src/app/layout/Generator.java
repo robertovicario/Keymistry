@@ -41,8 +41,6 @@ public class Generator extends JPanel {
         Box.Filler filler3 = new Box.Filler(new Dimension(24, 0), new Dimension(24, 0), new Dimension(24, 32767));
         Box.Filler filler4 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(32767, 32767));
 
-        jPanel1.setBackground(Color.WHITE);
-
         jToolBar1.setRollover(true);
 
         jTextField1.setFont(new Font("", Font.BOLD, 20));
@@ -78,7 +76,6 @@ public class Generator extends JPanel {
         jSlider1.setToolTipText("");
         jSlider1.setValue(12);
 
-        jToolBar2.setBackground(Color.WHITE);
         jToolBar2.setRollover(true);
 
         jCheckBox1.setSelected(true);
