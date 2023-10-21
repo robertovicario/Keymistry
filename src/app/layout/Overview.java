@@ -15,14 +15,15 @@ import java.net.URISyntaxException;
  * @version 1.0
  */
 public class Overview extends JPanel {
-    private final JLabel jLabel1 = new JLabel();
+    private final String repositoryPath = "https://github.com/robertovicario/Keymistry.git";
+    private final JLabel jLabel1 = new JLabel("Learn more on GitHub: github.com/Keymistry.git");
 
     public Overview() {
         initComponents();
         initEvents();
     }
 
-    public void initComponents() {
+    private void initComponents() {
         JPanel jPanel1 = new JPanel();
         JToolBar jToolBar1 = new JToolBar();
         Box.Filler filler1 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(32767, 32767));
@@ -32,7 +33,6 @@ public class Overview extends JPanel {
         jToolBar1.add(filler1);
 
         jLabel1.setFont(new Font("", Font.PLAIN, 20));
-        jLabel1.setText("Learn more on GitHub: github.com/Keymistry.git");
         jToolBar1.add(jLabel1);
         jToolBar1.add(filler2);
 
@@ -71,12 +71,12 @@ public class Overview extends JPanel {
         );
     }
 
-    public void initEvents() {
+    private void initEvents() {
         jLabel1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-                    Desktop.getDesktop().browse(new URI("https://github.com/robertovicario/Keymistry.git"));
+                    Desktop.getDesktop().browse(new URI(repositoryPath));
                 } catch (IOException | URISyntaxException ex) {
                     new Alert(ex.getMessage());
                 }
