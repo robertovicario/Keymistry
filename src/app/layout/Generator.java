@@ -13,17 +13,17 @@ import java.awt.event.KeyEvent;
  * @version 1.0
  */
 public class Generator extends JPanel {
-    private final JTextField jTextField1 = new JTextField();
-    private final JButton jButton1 = new JButton();
-    private final JButton jButton2 = new JButton();
-    private final JLabel jLabel1 = new JLabel();
+    private final JTextField jTextField1 = new JTextField("PASSWORD");
+    private final JButton jButton1 = new JButton("Generate");
+    private final JButton jButton2 = new JButton("Copy");
+    private final JLabel jLabel1 = new JLabel("STRENGTH");
     private final JProgressBar jProgressBar1 = new JProgressBar();
-    private final JLabel jLabel2 = new JLabel();
+    private final JLabel jLabel2 = new JLabel("Length: 12");
     private final JSlider jSlider1 = new JSlider();
-    private final JCheckBox jCheckBox1 = new JCheckBox();
-    private final JCheckBox jCheckBox2 = new JCheckBox();
-    private final JCheckBox jCheckBox3 = new JCheckBox();
-    private final JCheckBox jCheckBox4 = new JCheckBox();
+    private final JCheckBox jCheckBox1 = new JCheckBox("Lowercase");
+    private final JCheckBox jCheckBox2 = new JCheckBox("Uppercase");
+    private final JCheckBox jCheckBox3 = new JCheckBox("Numbers");
+    private final JCheckBox jCheckBox4 = new JCheckBox("Symbols");
     CoreGenerator coreGenerator = new CoreGenerator(jTextField1, jLabel1, jProgressBar1, jSlider1, jCheckBox1, jCheckBox2, jCheckBox3, jCheckBox4);
 
     public Generator() {
@@ -31,7 +31,7 @@ public class Generator extends JPanel {
         initEvents();
     }
 
-    public void initComponents() {
+    private void initComponents() {
         JPanel jPanel1 = new JPanel();
         JToolBar jToolBar1 = new JToolBar();
         JSeparator jSeparator1 = new JSeparator();
@@ -44,28 +44,23 @@ public class Generator extends JPanel {
         jToolBar1.setRollover(true);
 
         jTextField1.setFont(new Font("", Font.BOLD, 20));
-        jTextField1.setText("PASSWORD");
         jToolBar1.add(jTextField1);
 
-        jButton1.setText("Generate");
         jButton1.setFocusable(false);
         jButton1.setHorizontalTextPosition(SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(SwingConstants.BOTTOM);
         jToolBar1.add(jButton1);
 
-        jButton2.setText("Copy");
         jButton2.setFocusable(false);
         jButton2.setHorizontalTextPosition(SwingConstants.CENTER);
         jButton2.setVerticalTextPosition(SwingConstants.BOTTOM);
         jToolBar1.add(jButton2);
 
         jLabel2.setFont(new Font("", Font.ITALIC, 13));
-        jLabel1.setText("STRENGTH");
 
         jProgressBar1.setStringPainted(true);
 
         jLabel2.setFont(new Font("", Font.ITALIC, 13));
-        jLabel2.setText("Length: 12");
 
         jSlider1.setMajorTickSpacing(32);
         jSlider1.setMaximum(32);
@@ -79,7 +74,6 @@ public class Generator extends JPanel {
         jToolBar2.setRollover(true);
 
         jCheckBox1.setSelected(true);
-        jCheckBox1.setText("Lowercase");
         jCheckBox1.setFocusable(false);
         jCheckBox1.setHorizontalTextPosition(SwingConstants.CENTER);
         jCheckBox1.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -87,7 +81,6 @@ public class Generator extends JPanel {
         jToolBar2.add(filler1);
 
         jCheckBox2.setSelected(true);
-        jCheckBox2.setText("Uppercase");
         jCheckBox2.setFocusable(false);
         jCheckBox2.setHorizontalTextPosition(SwingConstants.CENTER);
         jCheckBox2.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -95,14 +88,12 @@ public class Generator extends JPanel {
         jToolBar2.add(filler2);
 
         jCheckBox3.setSelected(true);
-        jCheckBox3.setText("Numbers");
         jCheckBox3.setFocusable(false);
         jCheckBox3.setHorizontalTextPosition(SwingConstants.CENTER);
         jCheckBox3.setVerticalTextPosition(SwingConstants.BOTTOM);
         jToolBar2.add(jCheckBox3);
         jToolBar2.add(filler3);
 
-        jCheckBox4.setText("Symbols");
         jCheckBox4.setFocusable(false);
         jCheckBox4.setHorizontalTextPosition(SwingConstants.CENTER);
         jCheckBox4.setVerticalTextPosition(SwingConstants.BOTTOM);
@@ -166,7 +157,7 @@ public class Generator extends JPanel {
         );
     }
 
-    public void initEvents() {
+    private void initEvents() {
         coreGenerator.mainThread();
         jTextField1.addKeyListener(new KeyAdapter() {
             @Override
