@@ -10,9 +10,9 @@ import java.awt.*;
  * @version 1.0
  */
 public class App extends JFrame {
-    private final String tab;
+    private final int tab;
 
-    public App(String tab) {
+    public App(int tab) {
         this.tab = tab;
 
         try {
@@ -31,10 +31,10 @@ public class App extends JFrame {
         jTabbedPane1.addTab("Overview", new Overview());
         jTabbedPane1.addTab("Generator", new Generator());
 
-        if (tab.equals("Generator")) {
-            jTabbedPane1.setSelectedIndex(1);
-        } else {
+        if (tab == 0) {
             jTabbedPane1.setSelectedIndex(0);
+        } else {
+            jTabbedPane1.setSelectedIndex(1);
         }
 
         GroupLayout layout = new GroupLayout(jFrame.getContentPane());
@@ -51,7 +51,7 @@ public class App extends JFrame {
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jTabbedPane1)
-                                .addGap(12, 12, 12))
+                                .addContainerGap())
         );
 
         jFrame.setTitle("Keymistry");

@@ -14,26 +14,6 @@ import java.util.Set;
  * @version 1.0
  */
 public class CoreGenerator {
-    private final JTextField jTextField1;
-    private final JLabel jLabel1;
-    private final JProgressBar jProgressBar1;
-    private final JSlider jSlider1;
-    private final JCheckBox jCheckBox1;
-    private final JCheckBox jCheckBox2;
-    private final JCheckBox jCheckBox3;
-    private final JCheckBox jCheckBox4;
-
-    public CoreGenerator(JTextField jTextField1, JLabel jLabel1, JProgressBar jProgressBar1, JSlider jSlider1, JCheckBox jCheckBox1, JCheckBox jCheckBox2, JCheckBox jCheckBox3, JCheckBox jCheckBox4) {
-        this.jTextField1 = jTextField1;
-        this.jLabel1 = jLabel1;
-        this.jProgressBar1 = jProgressBar1;
-        this.jSlider1 = jSlider1;
-        this.jCheckBox1 = jCheckBox1;
-        this.jCheckBox2 = jCheckBox2;
-        this.jCheckBox3 = jCheckBox3;
-        this.jCheckBox4 = jCheckBox4;
-    }
-
     public void generatePassword() {
         String LOWERCASE_CHARS = "abcdefghijklmnopqrstuvwxyz";
         String UPPERCASE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

@@ -24,7 +24,7 @@ public class Generator extends JPanel {
     private final JCheckBox jCheckBox2 = new JCheckBox("Uppercase");
     private final JCheckBox jCheckBox3 = new JCheckBox("Numbers");
     private final JCheckBox jCheckBox4 = new JCheckBox("Symbols");
-    CoreGenerator coreGenerator = new CoreGenerator(jTextField1, jLabel1, jProgressBar1, jSlider1, jCheckBox1, jCheckBox2, jCheckBox3, jCheckBox4);
+    CoreGenerator coreGenerator = new CoreGenerator();
 
     public Generator() {
         initComponents();
