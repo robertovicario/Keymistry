@@ -23,16 +23,16 @@ public class Overview extends JPanel {
         initEvents();
     }
 
-    private void initComponents() {
+    public void initComponents() {
         JPanel jPanel1 = new JPanel();
         JToolBar jToolBar1 = new JToolBar();
-        Box.Filler filler1 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(32767, 32767));
-        Box.Filler filler2 = new Box.Filler(new Dimension(0, 0), new Dimension(0, 0), new Dimension(32767, 32767));
+        Box.Filler filler1 = new Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
+        Box.Filler filler2 = new Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
 
         jToolBar1.setRollover(true);
         jToolBar1.add(filler1);
 
-        jLabel1.setFont(new Font("", Font.PLAIN, 20));
+        jLabel1.setFont(new java.awt.Font("", Font.PLAIN, 20));
         jToolBar1.add(jLabel1);
         jToolBar1.add(filler2);
 
@@ -40,7 +40,7 @@ public class Overview extends JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
                 jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jToolBar1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addContainerGap())
@@ -71,13 +71,14 @@ public class Overview extends JPanel {
         );
     }
 
-    private void initEvents() {
+    public void initEvents() {
         jLabel1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-                    Desktop.getDesktop().browse(new URI(repositoryPath));
-                } catch (IOException | URISyntaxException ex) {
+                    URI uri = new URI(repositoryPath);
+                    Desktop.getDesktop().browse(uri);
+                } catch (URISyntaxException | IOException ex) {
                     new Alert(ex.getMessage());
                 }
             }
