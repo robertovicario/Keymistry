@@ -166,17 +166,22 @@ public class Generator extends JPanel {
         jTextField1.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
+                /*
                 int length = jSlider1.getValue();
                 String password = jTextField1.getText();
                 int complexity = coreGenerator.getComplexity(password, length);
+                String strength = coreGenerator.getStrength(complexity);
 
-                jLabel1.setText(coreGenerator.getStrength(complexity));
+                jLabel1.setText(strength);
                 jProgressBar1.setValue(complexity);
                 jLabel2.setText("Length: " + length);
                 jSlider1.setValue(length);
+
+                 */
             }
         });
         jButton1.addActionListener(e -> {
+            /*
             int length = jSlider1.getValue();
             boolean useLowerCase = jCheckBox1.isSelected();
             boolean useUpperCase = jCheckBox2.isSelected();
@@ -197,6 +202,8 @@ public class Generator extends JPanel {
                 jLabel2.setText("Length: " + length);
                 jSlider1.setValue(length);
             }
+
+             */
         });
         jButton2.addActionListener(e -> {
             String text = jTextField1.getText();
@@ -211,14 +218,15 @@ public class Generator extends JPanel {
             boolean areSelected = useLowerCase || useUpperCase || useNumbers || useSymbols;
             String password = coreGenerator.generatePassword(length, useLowerCase, useUpperCase, useNumbers, useSymbols);
             int complexity = coreGenerator.getComplexity(password, length);
+            String strength = coreGenerator.getStrength(complexity);
 
-            setCheckBoxForeground(UIManager.getColor("JCheckBox.foreground"));
             if (!areSelected) {
                 setCheckBoxForeground(Color.RED);
                 new Alert("Please, select at least one option to generate a password.");
             } else {
+                setCheckBoxForeground(UIManager.getColor("JCheckBox.foreground"));
                 jTextField1.setText(password);
-                jLabel1.setText(coreGenerator.getStrength(complexity));
+                jLabel1.setText(strength);
                 jProgressBar1.setValue(complexity);
                 jLabel2.setText("Length: " + length);
             }
