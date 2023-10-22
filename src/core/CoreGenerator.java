@@ -21,31 +21,31 @@ public class CoreGenerator {
         String UPPERCASE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String NUMBER_CHARS = "0123456789";
         String SYMBOL_CHARS = "!@#$%^&*()_+-=[]{}|;:,.<>?";
-        StringBuilder charSet = new StringBuilder();
+        StringBuilder stringBuilder1 = new StringBuilder();
 
         if (useLowerCase) {
-            charSet.append(LOWERCASE_CHARS);
+            stringBuilder1.append(LOWERCASE_CHARS);
         }
 
         if (useUpperCase) {
-            charSet.append(UPPERCASE_CHARS);
+            stringBuilder1.append(UPPERCASE_CHARS);
         }
 
         if (useNumbers) {
-            charSet.append(NUMBER_CHARS);
+            stringBuilder1.append(NUMBER_CHARS);
         }
 
         if (useSymbols) {
-            charSet.append(SYMBOL_CHARS);
+            stringBuilder1.append(SYMBOL_CHARS);
         }
 
         Random random = new Random();
-        StringBuilder passwordBuilder = new StringBuilder();
+        StringBuilder stringBuilder2 = new StringBuilder();
 
         for (int i = 0; i < length; i++) {
-            int randomIndex = random.nextInt(charSet.length());
-            char randomChar = charSet.charAt(randomIndex);
-            passwordBuilder.append(randomChar);
+            int randomIndex = random.nextInt(stringBuilder1.length());
+            char randomChar = stringBuilder1.charAt(randomIndex);
+            stringBuilder2.append(randomChar);
         }
 
         return passwordBuilder.toString();

@@ -162,28 +162,12 @@ public class Generator extends JPanel {
     }
 
     private void initEvents() {
-        int length;
-        boolean useLowerCase;
-        boolean useUpperCase;
-        boolean useNumbers;
-        boolean useSymbols;
-        String password;
-
-        jTextField1.setText(password);
         jTextField1.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                length = jSlider1.getValue();
-                useLowerCase = jCheckBox1.isSelected();
-                useUpperCase = jCheckBox2.isSelected();
-                useNumbers = jCheckBox3.isSelected();
-                useSymbols = jCheckBox4.isSelected();
-                password = coreGenerator.generatePassword(length, useLowerCase, useUpperCase, useNumbers, useSymbols);
-
-
-                String text = jTextField1.getText();
-                int length = text.length();
-                int complexity = coreGenerator.getComplexity(text, length);
+                int length = jSlider1.getValue();
+                String password = jTextField1.getText();
+                int complexity = coreGenerator.getComplexity(password, length);
 
                 jLabel1.setText(coreGenerator.getStrength(complexity));
                 jProgressBar1.setValue(complexity);
@@ -192,23 +176,37 @@ public class Generator extends JPanel {
             }
         });
         jButton1.addActionListener(e -> {
-            String newPassword = coreGenerator.generatePassword(length, useLowerCase, useUpperCase, useNumbers, useSymbols);
-            jTextField1.setText(newPassword);
+            int length = jSlider1.getValue();
+            boolean useLowerCase = jCheckBox1.isSelected();
+            boolean useUpperCase = jCheckBox2.isSelected();
+            boolean useNumbers = jCheckBox3.isSelected();
+            boolean useSymbols = jCheckBox4.isSelected();
+            String password = coreGenerator.generatePassword(length, useLowerCase, useUpperCase, useNumbers, useSymbols);
+            int complexity = coreGenerator.getComplexity(password, length);
+
+            jTextField1.setText(password);
+            jLabel1.setText(coreGenerator.getStrength(complexity));
+            jProgressBar1.setValue(complexity);
+            jLabel2.setText("Length: " + length);
+            jSlider1.setValue(length);
         });
         jButton2.addActionListener(e -> {
             String text = jTextField1.getText();
             coreGenerator.copyToClipboard(text);
         });
         jSlider1.addChangeListener(e -> {
-            String text = jTextField1.getText();
-            int newLength = jSlider1.getValue();
-            int complexity = coreGenerator.getComplexity(text, newLength);
-            String newPassword = coreGenerator.generatePassword(newLength, useLowerCase, useUpperCase, useNumbers, useSymbols);
+            int length = jSlider1.getValue();
+            boolean useLowerCase = jCheckBox1.isSelected();
+            boolean useUpperCase = jCheckBox2.isSelected();
+            boolean useNumbers = jCheckBox3.isSelected();
+            boolean useSymbols = jCheckBox4.isSelected();
+            String password = coreGenerator.generatePassword(length, useLowerCase, useUpperCase, useNumbers, useSymbols);
+            int complexity = coreGenerator.getComplexity(password, length);
 
-            jTextField1.setText(newPassword);
+            jTextField1.setText(password);
             jLabel1.setText(coreGenerator.getStrength(complexity));
             jProgressBar1.setValue(complexity);
-            jLabel2.setText("Length: " + newLength);
+            jLabel2.setText("Length: " + length);
         });
     }
 }
