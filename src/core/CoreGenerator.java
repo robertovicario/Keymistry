@@ -48,7 +48,7 @@ public class CoreGenerator {
             stringBuilder2.append(randomChar);
         }
 
-        return passwordBuilder.toString();
+        return stringBuilder2.toString();
     }
 
     public void copyToClipboard(String text) {
