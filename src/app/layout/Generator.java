@@ -1,5 +1,6 @@
 package app.layout;
 
+import alert.Alert;
 import core.CoreGenerator;
 
 import javax.swing.*;
@@ -181,14 +182,21 @@ public class Generator extends JPanel {
             boolean useUpperCase = jCheckBox2.isSelected();
             boolean useNumbers = jCheckBox3.isSelected();
             boolean useSymbols = jCheckBox4.isSelected();
+            boolean areSelected = useLowerCase || useUpperCase || useNumbers || useSymbols;
             String password = coreGenerator.generatePassword(length, useLowerCase, useUpperCase, useNumbers, useSymbols);
             int complexity = coreGenerator.getComplexity(password, length);
 
-            jTextField1.setText(password);
-            jLabel1.setText(coreGenerator.getStrength(complexity));
-            jProgressBar1.setValue(complexity);
-            jLabel2.setText("Length: " + length);
-            jSlider1.setValue(length);
+            setCheckBoxForeground(UIManager.getColor("JCheckBox.foreground"));
+            if (!areSelected) {
+                setCheckBoxForeground(Color.RED);
+                new Alert("Please, select at least one option to generate a password.");
+            } else {
+                jTextField1.setText(password);
+                jLabel1.setText(coreGenerator.getStrength(complexity));
+                jProgressBar1.setValue(complexity);
+                jLabel2.setText("Length: " + length);
+                jSlider1.setValue(length);
+            }
         });
         jButton2.addActionListener(e -> {
             String text = jTextField1.getText();
@@ -200,13 +208,27 @@ public class Generator extends JPanel {
             boolean useUpperCase = jCheckBox2.isSelected();
             boolean useNumbers = jCheckBox3.isSelected();
             boolean useSymbols = jCheckBox4.isSelected();
+            boolean areSelected = useLowerCase || useUpperCase || useNumbers || useSymbols;
             String password = coreGenerator.generatePassword(length, useLowerCase, useUpperCase, useNumbers, useSymbols);
             int complexity = coreGenerator.getComplexity(password, length);
 
-            jTextField1.setText(password);
-            jLabel1.setText(coreGenerator.getStrength(complexity));
-            jProgressBar1.setValue(complexity);
-            jLabel2.setText("Length: " + length);
+            setCheckBoxForeground(UIManager.getColor("JCheckBox.foreground"));
+            if (!areSelected) {
+                setCheckBoxForeground(Color.RED);
+                new Alert("Please, select at least one option to generate a password.");
+            } else {
+                jTextField1.setText(password);
+                jLabel1.setText(coreGenerator.getStrength(complexity));
+                jProgressBar1.setValue(complexity);
+                jLabel2.setText("Length: " + length);
+            }
         });
+    }
+
+    private void setCheckBoxForeground(Color color) {
+        jCheckBox1.setForeground(color);
+        jCheckBox2.setForeground(color);
+        jCheckBox3.setForeground(color);
+        jCheckBox4.setForeground(color);
     }
 }
