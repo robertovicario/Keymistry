@@ -19,7 +19,7 @@ public class Generator extends JPanel {
     private final JTextField jTextField1 = new JTextField("PASSWORD");
     private final JButton jButton1 = new JButton("Generate");
     private final JButton jButton2 = new JButton("Copy");
-    private final JLabel jLabel1 = new JLabel("STRENGTH");
+    private final JLabel jLabel1 = new JLabel("Strength: Very Strong - Time to crack: Very long time");
     private final JProgressBar jProgressBar1 = new JProgressBar();
     private final JLabel jLabel2 = new JLabel("Length: 12");
     private final JSlider jSlider1 = new JSlider();
@@ -162,29 +162,53 @@ public class Generator extends JPanel {
     }
 
     private void initEvents() {
+        int length;
+        boolean useLowerCase;
+        boolean useUpperCase;
+        boolean useNumbers;
+        boolean useSymbols;
+        String password;
+
+        jTextField1.setText(password);
         jTextField1.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                super.keyReleased(e);
+                length = jSlider1.getValue();
+                useLowerCase = jCheckBox1.isSelected();
+                useUpperCase = jCheckBox2.isSelected();
+                useNumbers = jCheckBox3.isSelected();
+                useSymbols = jCheckBox4.isSelected();
+                password = coreGenerator.generatePassword(length, useLowerCase, useUpperCase, useNumbers, useSymbols);
+
+
+                String text = jTextField1.getText();
+                int length = text.length();
+                int complexity = coreGenerator.getComplexity(text, length);
+
+                jLabel1.setText(coreGenerator.getStrength(complexity));
+                jProgressBar1.setValue(complexity);
+                jLabel2.setText("Length: " + length);
+                jSlider1.setValue(length);
             }
         });
-        jButton1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
+        jButton1.addActionListener(e -> {
+            String newPassword = coreGenerator.generatePassword(length, useLowerCase, useUpperCase, useNumbers, useSymbols);
+            jTextField1.setText(newPassword);
         });
         jButton2.addActionListener(e -> {
             String text = jTextField1.getText();
             coreGenerator.copyToClipboard(text);
         });
         jSlider1.addChangeListener(e -> {
-            int length = jSlider1.getValue();
-            jLabel2.setText("Length: " + length);
-
             String text = jTextField1.getText();
-            int value = coreGenerator.getComplexity(text, length);
-            jProgressBar1.setValue(value);
+            int newLength = jSlider1.getValue();
+            int complexity = coreGenerator.getComplexity(text, newLength);
+            String newPassword = coreGenerator.generatePassword(newLength, useLowerCase, useUpperCase, useNumbers, useSymbols);
+
+            jTextField1.setText(newPassword);
+            jLabel1.setText(coreGenerator.getStrength(complexity));
+            jProgressBar1.setValue(complexity);
+            jLabel2.setText("Length: " + newLength);
         });
     }
 }
