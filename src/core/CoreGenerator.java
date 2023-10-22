@@ -1,19 +1,35 @@
 package core;
 
-import alert.Alert;
-
-import javax.swing.*;
 import java.awt.*;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 
 /**
  * @author Roberto Vicario
  * @version 1.0
  */
 public class CoreGenerator {
+    public void copyToClipboard(String text) {
+        StringSelection stringSelection = new StringSelection(text);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(stringSelection, null);
+    }
+    
+    public int getComplexity(String text, int length) {
+        if (length < 4) {
+            return 0;
+        } else if (length < 8) {
+            return 25;
+        } else if (length < 10) {
+            return 50;
+        } else if (length < 12) {
+            return 75;
+        } else {
+            return 100;
+        }
+    }
+
+    /*
     public void generatePassword() {
         String LOWERCASE_CHARS = "abcdefghijklmnopqrstuvwxyz";
         String UPPERCASE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -136,4 +152,5 @@ public class CoreGenerator {
             computeComplexity(password, length);
         }
     }
+*/
 }

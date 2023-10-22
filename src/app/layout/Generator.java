@@ -3,8 +3,11 @@ package app.layout;
 import core.CoreGenerator;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.datatransfer.StringSelection;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -58,6 +61,7 @@ public class Generator extends JPanel {
 
         jLabel2.setFont(new Font("", Font.ITALIC, 13));
 
+        jProgressBar1.setValue(100);
         jProgressBar1.setStringPainted(true);
 
         jLabel2.setFont(new Font("", Font.ITALIC, 13));
@@ -158,27 +162,29 @@ public class Generator extends JPanel {
     }
 
     private void initEvents() {
-        coreGenerator.mainThread();
         jTextField1.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                coreGenerator.customizePassword();
+                super.keyReleased(e);
             }
         });
-        jButton1.addActionListener(e -> coreGenerator.mainThread());
+        jButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
         jButton2.addActionListener(e -> {
-            String data = jTextField1.getText();
-            Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(data), null);
+            String text = jTextField1.getText();
+            coreGenerator.copyToClipboard(text);
         });
         jSlider1.addChangeListener(e -> {
-            int text = jSlider1.getValue();
-            jLabel2.setText("Length: " + text);
+            int length = jSlider1.getValue();
+            jLabel2.setText("Length: " + length);
 
-            coreGenerator.mainThread();
+            String text = jTextField1.getText();
+            int value = coreGenerator.getComplexity(text, length);
+            jProgressBar1.setValue(value);
         });
-        jCheckBox1.addActionListener(e -> coreGenerator.mainThread());
-        jCheckBox2.addActionListener(e -> coreGenerator.mainThread());
-        jCheckBox3.addActionListener(e -> coreGenerator.mainThread());
-        jCheckBox4.addActionListener(e -> coreGenerator.mainThread());
     }
 }
