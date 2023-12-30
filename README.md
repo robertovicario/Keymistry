@@ -9,9 +9,9 @@ Keymistry is the fusion of "Key" and "Chemistry", signifying the seamless union 
 - 🔑 "Key" signifies the fundamental component or code, much like a password;
 - 🧪 "Chemistry" hints at the intricate and precise processes required to produce something.
 
-## User Interface
-
-![1](https://github.com/robertovicario/Keymistry/blob/4ed4adcc55feb5e29f4a7c6cf407c0ed165f008b/img/UI.png)
+| <img src="https://raw.githubusercontent.com/robertovicario/Keymistry/master/img/UI.png" alt="UI.png" width="512"/> |
+| :--: |
+| User Interface |
 
 ## Instructions
 
